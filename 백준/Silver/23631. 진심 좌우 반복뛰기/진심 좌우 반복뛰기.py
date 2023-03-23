@@ -4,12 +4,12 @@ def find(n,k):
     if l**2+l <= 2*n/k:
         l += 1
     if l%2:  # 오른쪽으로 가다가 끝나면
-        return k*(1-l**2)//2+n, 'R'
+        return (l//2+1)*k-1 - ((l*(l+1))*k//2-1 - n), 'R'
     else:
-        return l**2*k//2-n, 'L'
+        return -(l//2)*k+1 + ((l*(l+1))*k//2-1 - n), 'L'
     
 
-T = int(sys.stdin.readline())
+T = int(input())
 for tc in range(1,T+1):
     n, k = map(int, sys.stdin.readline().split())
     n -= 1
