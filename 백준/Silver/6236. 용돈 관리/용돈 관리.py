@@ -1,5 +1,6 @@
+import sys
 n, m = map(int , input().split())
-spend = [int(input()) for _ in range(n)]
+spend = [int(sys.stdin.readline()) for _ in range(n)]
 s = max(spend)  # 가장 큰 지출 = 최소한의 인출 값
 e = s * n  # 최대 인출 값
 while not s == e:  # 찾기 전까지
