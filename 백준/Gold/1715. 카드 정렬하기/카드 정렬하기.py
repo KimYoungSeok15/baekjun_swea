@@ -1,5 +1,4 @@
 import sys
-from collections import deque
 from heapq import heappush, heappop
 input = sys.stdin.readline
 n = int(input())
