@@ -20,11 +20,11 @@ dfs(v)
 print()
 visited = [0]*(n+1)
 q = deque([v])
+visited[v] = 1
 while q:
-    now = q.popleft()
-    if visited[now]:
-        continue
-    visited[now] = 1
+    now = q.popleft() 
+    for e in edge[now]:
+        if not visited[e]:
+            q.append(e)
+            visited[e] = 1
     print(now, end=' ')
-    q.extend(edge[now])
-print()
