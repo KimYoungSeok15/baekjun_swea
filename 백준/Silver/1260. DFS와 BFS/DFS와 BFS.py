@@ -27,3 +27,4 @@ while q:
     visited[now] = 1
     print(now, end=' ')
     q.extend(edge[now])
+print()
