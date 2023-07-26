@@ -1,4 +1,6 @@
 from collections import deque
+from sys import stdin
+input = stdin.readline
 t = int(input())
 for tc in range(t):
     m, n, k = map(int, input().split())
