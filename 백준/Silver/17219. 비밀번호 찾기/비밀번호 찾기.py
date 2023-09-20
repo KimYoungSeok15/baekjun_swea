@@ -1,6 +1,6 @@
 i=input
 n,m=map(int,i().split())
-d=dict()
+d={}
 for _ in range(n):
   t=i().split()
   d[t[0]]=t[1]
