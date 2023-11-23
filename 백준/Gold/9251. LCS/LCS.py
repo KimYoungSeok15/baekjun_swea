@@ -1,25 +1,24 @@
-a = input()
-b = input()
-inf = -int(1e9)
-dp = [[0] * (len(a)+1) for _ in range(len(b)+1)]
+def lcs_length(X, Y):
+    m = len(X)
+    n = len(Y)
 
-# 첫 번째 행 초기화
-for i in range(len(a)):
-    if a[i] == b[0]:
-        dp[1][i+1:] = [1] * (len(a) - i)
-        break
+    # 테이블 초기화
+    dp = [[0] * (n + 1) for _ in range(m + 1)]
 
-# 첫 번째 열 초기화
-for j in range(len(b)):
-    if a[0] == b[j]:
-        dp[j+1][1] = 1
+    # LCS 길이 계산
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            if X[i - 1] == Y[j - 1]:
+                dp[i][j] = dp[i - 1][j - 1] + 1
+            else:
+                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
 
-# LCS 길이 계산
-for i in range(1, len(b)+1):
-    for j in range(1, len(a)+1):
-        if a[j-1] == b[i-1]:
-            dp[i][j] = dp[i-1][j-1] + 1
-        else:
-            dp[i][j] = max(dp[i-1][j], dp[i][j-1])
+    return dp[m][n]
 
-print(dp[len(b)][len(a)])
+# 두 문자열 입력 받기
+X = input().strip()
+Y = input().strip()
+
+# LCS의 길이 출력
+result = lcs_length(X, Y)
+print(result)
