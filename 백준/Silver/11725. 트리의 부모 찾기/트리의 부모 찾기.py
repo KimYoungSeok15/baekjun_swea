@@ -1,4 +1,7 @@
+import sys
 from collections import deque as d
+input = sys.stdin.readline
+print = sys.stdout.write
 n = int(input())
 edge = [[] for _ in range(n+1)]
 for _ in range(n-1):
@@ -18,4 +21,4 @@ while q:
             q.append(e)
             parent[e] = now
 for i in range(2, n+1):
-    print(parent[i])
+    print(str(parent[i])+'\n')
