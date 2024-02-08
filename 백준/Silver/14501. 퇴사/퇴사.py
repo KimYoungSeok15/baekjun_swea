@@ -1,15 +1,11 @@
-n = int(input())
-arr = [list(map(int, input().split())) for _ in range(n)]
-dp = [0]*(n+6)
+import sys
+input = sys.stdin.readline
+N = int(input())
+schedule = [list(map(int, input().split())) for _ in range(N)]
+dp = [0]*(N+1)
 i = 0
-while i < n:
-  j = i
-  if j + arr[i][0] <= n and dp[j] + arr[i][1] > dp[j+arr[i][0]]:
-    dp[j+arr[i][0]] = dp[j] + arr[i][1]
-    k = j+arr[i][0]
-    while k <= n:
-      dp[k] = max(dp[k], dp[j] + arr[i][1])
-      k += 1
-  i += 1
-print(max(dp))
-  
+for i in range(N):
+    if i+schedule[i][0] <= N:
+        dp[i+schedule[i][0]] = max(dp[i+schedule[i][0]], dp[i]+schedule[i][1])
+    dp[i+1] = max(dp[i+1], dp[i])
+print(dp[-1])
