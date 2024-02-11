@@ -1,9 +1,11 @@
 import sys
 input = sys.stdin.readline
-n = int(input())
-arr = [list(map(int, input().split())) for _ in range(n)]
-dp = [[0]*3 for _ in range(n)]
-dp[0] = arr[0]
-for i in range(n-1):
-    dp[i+1] = [min(dp[i][1],dp[i][2])+arr[i+1][0], min(dp[i][0],dp[i][2])+arr[i+1][1],min(dp[i][0],dp[i][1])+arr[i+1][2]]
-print(min(dp[n-1]))
+N = int(input())
+h = [list(map(int,input().split())) for _ in range(N)]
+d = [[0,0,0] for _ in range(N+1)]
+
+for i in range(N):
+    d[i+1][0] = min(d[i][1], d[i][2]) + h[i][0]
+    d[i+1][1] = min(d[i][0], d[i][2]) + h[i][1]
+    d[i+1][2] = min(d[i][0], d[i][1]) + h[i][2]
+print(min(d[N])) 
