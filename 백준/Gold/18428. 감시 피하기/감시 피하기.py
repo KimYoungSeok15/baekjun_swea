@@ -15,7 +15,25 @@ for i in range(n):
             teacher.append((i, j))
 
 d = ((1, 0), (0, 1), (-1, 0), (0, -1))
-for case in combinations(empty, 3):
+
+pos_row = set()
+pos_col = set()
+for t in teacher:
+    pos_row.add(t[0])
+    pos_col.add(t[1])
+
+pos = set()
+for pr in pos_row:
+    for j in range(n):
+        if arr[pr][j] == "X":
+            pos.add((pr, j))
+
+for pc in pos_col:
+    for i in range(n):
+        if arr[i][pc] == "X":
+            pos.add((i, pc))
+
+for case in combinations(pos, 3):
     for obs in case:
         arr[obs[0]][obs[1]] = "O"
     flag = True
