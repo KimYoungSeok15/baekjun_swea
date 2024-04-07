@@ -1,10 +1,11 @@
 n, l = map(int, input().split())
-for i in range(l, 101):
-    x = n - i * (i + 1) / 2
-    if x % i == 0:
-        x = int(x / i)
-        if x >= -1:
-            print(*list(range(x + 1, x + i + 1)))
-            break
-else:
-    print(-1)
+
+for length in range(l, 101):
+    a = n / length - (length - 1) / 2
+    if a.is_integer() and a >= 0:
+        start = int(a)
+        result = list(range(start, start + length))
+        print(*result)
+        exit()
+
+print(-1)
